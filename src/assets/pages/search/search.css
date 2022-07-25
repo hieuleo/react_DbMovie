@@ -1,0 +1,29 @@
+.search-results{
+    background-color: rgba(10.5, 31.5, 52.5, 1);
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 8px;
+    padding: 8px 50px;
+    overflow: hidden;
+}
+
+.search-results > span{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.search-results--name{
+    color: rgba(241.5, 10.5, 10.5, 1)!important;
+    background: linear-gradient(to right, rgb(246, 54, 54, 1) 0%, rgb(246, 20, 20) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+}
+
+.search-results--number{
+    background: linear-gradient(to right, #c0fecf 0%, #1ed5a9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+}

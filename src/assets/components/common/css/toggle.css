@@ -1,0 +1,67 @@
+/* color-mode */
+
+.theme-toggler{
+    /* position: absolute; */
+    /* top: 16px;
+    left: 16px; */
+    display: inline-block;
+    /* align-items: center;
+    justify-content: center; */
+  
+  }
+  
+  .toggler{
+    height: 32px;
+    border-radius: 50px;
+    background-color: #425b70;
+    position: relative;
+    cursor: pointer;
+    margin:0 2px;
+    transition: all 0.2s linear;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    border: 1px solid rgba(30,213,169, 1);
+  }
+
+  .theme-toggler > span{
+    color: #999;
+    font-size: 10px;
+  }
+
+  .theme-toggler > span > span {
+    display: inline-flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    padding: 4px 20px;
+    margin-bottom: 0;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #fff;
+  }
+
+  
+  .toggle-left{
+    border-radius: 50px;
+    transition: all 0.2s linear;
+    z-index: 2;
+  }
+
+  .toggle-right{
+    border-radius: 50px;
+    transition: all 0.3s linear;
+    z-index: 2;
+  }
+
+  .toggle-btn{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 50px;
+    transition: all 0.2s linear;
+    z-index: 1;
+    background: linear-gradient(to right, rgba(192,254,207, 1) 0%, rgba(30,213,169, 1) 100%);;
+    z-index: 1;
+  }

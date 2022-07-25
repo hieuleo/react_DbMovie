@@ -1,0 +1,243 @@
+.layout{
+  padding-top: 64px;
+}
+
+.header-content{
+  font-size: 3em;
+  font-weight: 700;
+  line-height: 1;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.header-content-sub{
+  font-size: 2em;
+  font-weight: 600;
+  margin: 5px 0;
+  padding: 0;
+  display: block;
+  color: #fff;
+}
+
+/* header.layout  */
+.link-custom{
+  color: #fff !important;
+  font-weight: 600!important;
+  font-size: 15px !important;
+}
+
+.site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+}
+
+.logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  line-height: 31px;
+}
+
+.ant-row-rtl .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+
+.ant-col .ant-card{
+  animation: showup linear 1s;
+}
+
+@keyframes showup {
+  from{
+      opacity: 0;
+  }
+
+  to{
+      opacity: 1;
+  }
+}
+
+/* title  */
+.class-title-col{
+    background-position: center center !important;
+    padding: 30px 40px !important;
+    border-radius: 3px !important;
+    animation: showup linear 1s;
+    min-height: 200px !important;
+    background-size: cover!important;
+    background-repeat: no-repeat!important;
+    transition: all 1s ease!important;
+}
+
+/* slick-slider.js */
+.slick-list{
+  margin: 0 5px!important;
+}
+
+.slick-slide img {
+  margin: auto!important;
+}
+.ant-card.ant-card-bordered.ant-card-hoverable{
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.ant-card-cover{
+  border-radius: 8px !important;
+  overflow: hidden!important;
+}
+
+.slick-arrow{
+  background-color: #fff!important;
+  border: 1px solid rgba(0, 0, 0, 0.245)!important;
+  width: 32px!important;
+  height: 32px!important;
+  color: rgba(0, 0, 0, 0.666)!important;
+  border-radius: 50%!important;
+}
+.slick-arrow:hover{
+  background-color: #fff!important;
+}
+.slick-prev {
+  margin-left: -14px!important;
+}
+.slick-next{
+  margin-right:-14px!important;
+}
+
+.slick-prev:before, .slick-next:before{
+  color: rgba(0, 0, 0, 0.666)!important;
+}
+
+/* progress-customize */
+.ant-card-body{
+  position: relative;
+} 
+
+.ant-progress-text{
+  color: #fcfefe !important;
+}
+
+.vote-customize{
+  position: absolute;
+  bottom: 12px;
+  margin:0;
+  right: 12px;
+  opacity: 0.7;
+}
+
+.circular-custom--list{
+  color: #fcfefe;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+}
+
+.CircularProgressbar .CircularProgressbar-text{
+  font-weight: 800;
+}
+
+/* event scroll hidden header */
+.visible {
+  /* display: flex; */
+  top: 0;
+  transition: top 0.5s ease-out;
+  z-index: 10;
+}
+
+.hidden {
+  /* display: none; */
+  top: -80px;
+  transition: top 0.5s ease-out;
+  z-index: 10;
+}
+
+
+/* search input */
+.ant-input-group-wrapper{
+  margin: 20px 0;
+}
+.ant-input-group-wrapper,
+.ant-input-wrapper{
+  border-radius: 500px !important;
+  overflow: hidden !important;
+}
+.ant-input-group-addon{
+  border-radius: 500px !important;
+  overflow: hidden !important;
+  transform: translateX(-25%) !important;
+  z-index: 2 !important;
+}
+
+.search_input .ant-input-affix-wrapper{
+  padding: 9px 25px !important;
+}
+
+.ant-input-search-button {
+  height: 42px !important;
+  width: 90px !important;
+  background: linear-gradient(to right, rgba(30,213,169, 1) 0%, rgba(1,180,228, 1) 100%) !important;
+  border-color: transparent !important;
+}
+
+.ant-input-search-button:hover{
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.anticon-search{
+  font-size: 18px;
+}
+
+
+/* //comunity */
+.class-comunity-col{
+  background-position: center center !important;
+  padding: 30px 40px !important;
+  border-radius: 3px !important;
+  animation: showup linear 1s;
+  min-height: 200px !important;
+  transition: all 0.5s;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white !important;
+}
+
+.header-content-community{
+  color: white !important;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: 2em;
+}
+
+.class-comunity-col p ,
+.class-comunity-col li
+{
+  font-size: 1.2em;
+  color: #fff;
+}
+
+.class-comunity-col em{
+  opacity: 0.7;
+}
+
+.btn_community{
+  background-color: rgba(128,91,231, 1)!important;
+  border: none !important;
+  font-size: 1.2em!important;
+  font-weight: 600!important;
+  height: 94px !important;
+  height: 41px !important;
+}
+.btn_community:hover{
+  opacity: 0.8;
+}
+
+/* //login/ */
