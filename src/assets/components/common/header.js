@@ -14,18 +14,18 @@ const HeaderComponent = () => {
     let items = []
     if (user === null) {
         items=[
-            {key: '/', label:  <Link className='link-custom' to={"/"}>Home</Link>},
-            {key: "/Search", label: <Link className='link-custom' to={"/Search"}>Search</Link>},
-            {key: '/Popular', label:  <Link className='link-custom' to={"/Popular"}>Popular</Link>},
-            {key: "/Upcoming", label: <Link className='link-custom' to={"/Upcoming"}>Up coming</Link>},
-            {key: "/login", label: <Link className='link-custom' to={"/login"}>Login</Link>},
+            {key: '/', label:  <Link className='link-custom' to={"/react_DbMovie"}>Home</Link>},
+            {key: "/Search", label: <Link className='link-custom' to={"/react_DbMovie/Search"}>Search</Link>},
+            {key: '/Popular', label:  <Link className='link-custom' to={"/react_DbMovie/Popular"}>Popular</Link>},
+            {key: "/Upcoming", label: <Link className='link-custom' to={"/react_DbMovie/Upcoming"}>Up coming</Link>},
+            {key: "/login", label: <Link className='link-custom' to={"/react_DbMovie/login"}>Login</Link>},
         ]
     }else {
         items=[
-            {key: '/', label:  <Link className='link-custom' to={"/"}>Home</Link>},
-            {key: "/Search", label: <Link className='link-custom' to={"/Search"}>Search</Link>},
-            {key: '/Popular', label:  <Link className='link-custom' to={"/Popular"}>Popular</Link>},
-            {key: "/Upcoming", label: <Link className='link-custom' to={"/Upcoming"}>Up coming</Link>},
+            {key: '/', label:  <Link className='link-custom' to={"/react_DbMovie"}>Home</Link>},
+            {key: "/Search", label: <Link className='link-custom' to={"/react_DbMovie/Search"}>Search</Link>},
+            {key: '/Popular', label:  <Link className='link-custom' to={"/react_DbMovie/Popular"}>Popular</Link>},
+            {key: "/Upcoming", label: <Link className='link-custom' to={"/react_DbMovie/Upcoming"}>Up coming</Link>},
             {key: "/logout", label: <Button onClick={() => logout()}>Logout</Button>},
         ]
     }
@@ -37,7 +37,7 @@ const HeaderComponent = () => {
             width: '100%',
           }}
         >
-            <Link to={"/"}>                
+            <Link to={"/react_DbMovie"}>                
                 <div className="logo" >
                         <img alt="logo" src={Logo}></img>
                 </div>

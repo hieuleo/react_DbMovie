@@ -12,7 +12,7 @@ const ErrorPage = () => {
                 title="OPPS! PAGE NOT FOUND"
                 subTitle="Sorry, the page you're looking for doesn't exist."
                 extra={
-                    <Link to={"/"}>  
+                    <Link to={"/react_DbMovie"}>  
                         <Button type="primary">Back Home</Button>
                     </Link>
                 }

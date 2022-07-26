@@ -8,14 +8,14 @@ const HeaderDetail = loadable(() => import('../../components/detail/header'));
 const ContentComponent = loadable(() => import('../../components/detail/container'));
 
 const DetailPage = () => {
-
     const [dataMovies, setDataMovies] = useState([]);
-    const language = useState('en-US')
+    const [language, setLanguage] = useState('en-US');
     const [loading, setLoading] = useState(true);
     let {id} = useParams();
 
     useEffect(() => {
         const callDataNew = async () => {
+            setLanguage('en-US');
             const data = await Api.getDetailMovie(id, language);
             if (!data.hasOwnProperty('status_code')) {
                 setDataMovies(data);
@@ -24,7 +24,7 @@ const DetailPage = () => {
         }
         callDataNew()
 
-    },[id,language])
+    },[id, language])
     // feature:
         // trả về thông báo k có data.
         // mục cmt: https://api.themoviedb.org/3/movie/338953/reviews?api_key=d4627862d17c429f5b5285fb09aeb150&language=en-US&page=1

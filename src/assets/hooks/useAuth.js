@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) => {
         let token = getToken(infoUser);
         if (token) {
             setUser(token);
-            navigate("./Upcoming", { replace : true }); // dieu huong login
+            navigate("/react_DbMovie/Upcoming", { replace : true }); // dieu huong login
         }else{
             alert(" Incorrect useName or passWord !!!")
         }
@@ -25,7 +25,7 @@ export const AuthProvider = ({children}) => {
     // handle logout request
     const logout = () => {
         setUser(null);
-        navigate("./login", { replace : true }); // dieu huong login
+        navigate("/react_DbMovie/login", { replace : true }); // dieu huong login
     }
 
     const value = useMemo(() => ({

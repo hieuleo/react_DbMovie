@@ -49,7 +49,7 @@ const List = ({lists,loading}) => {
             {lists.map((item)=>{
                 return(
                     <Col key={item.id} span ={6}>
-                            <Link to={`/Detail/${slugify(item.title)}~${item.id}`}>
+                            <Link to={`/react_DbMovie/Detail/${slugify(item.title)}~${item.id}`}>
                                 <Card
                                     style={{margin : '10px'}} 
                                     hoverable

@@ -25,9 +25,9 @@ const LoginPage = () => {
           wrapperCol={{
             span: 16,
           }}
-          initialValues={{
-            remember: true,
-          }}
+          // initialValues={{
+          //   remember: true,
+          // }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
@@ -35,6 +35,7 @@ const LoginPage = () => {
           <Form.Item
             label="Username"
             name="username"
+            initialValues="admin"
             rules={[
               {
                 required: true,
@@ -48,6 +49,7 @@ const LoginPage = () => {
           <Form.Item
             label="Password"
             name="password"
+            initialValues="admin"
             rules={[
               {
                 required: true,

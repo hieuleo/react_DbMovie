@@ -5,7 +5,7 @@ export const ProtectedLayout = ({children}) => {
     const { user } = useAuth();
     const outlet = useOutlet();
     if ( user === null ) {
-        return <Navigate to={"/login"}/>
+        return <Navigate to={"/react_DbMovie/login"}/>
     }
 
     return(

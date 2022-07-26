@@ -6,7 +6,7 @@ const ContainerComponent = () => {
     return (
         <Row className="container_row">
             <Col className="container_col">
-
+                
             </Col>
         </Row>
     )

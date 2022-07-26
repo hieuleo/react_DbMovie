@@ -39,7 +39,7 @@ function SlickComponent({loading, data, config, className}) {
             {/* <Row> */}
             {data.map(item => (item.backdrop_path !==null && (
                 <Col className={'Col-Slider-Item'} key={item.id}>
-                    <Link to={`/Detail/${slugify(item.title)}~${item.id}`}>
+                    <Link to={`/react_DbMovie/Detail/${slugify(item.title)}~${item.id}`}>
                         <Card 
                             hoverable
                             style={{

@@ -85,8 +85,8 @@ const HeaderDetail = ({dataMovies, loading}) => {
                     <div className={'circular_detail'}>
                         <CircularProgressbar 
                             background={true} 
-                            value={dataMovies.vote_average*10} 
-                            text={`${dataMovies.vote_average*10}%`}
+                            value={Math.round(dataMovies.vote_average*10)} 
+                            text={`${Math.round(dataMovies.vote_average*10)}%`}
                             styles={buildStyles({
                                 // Rotation of path and trail, in number of turns (0-1)
                                 rotation: 0,
