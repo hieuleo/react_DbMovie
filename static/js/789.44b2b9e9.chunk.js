@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunklearn=self.webpackChunklearn||[]).push([[789],{2789:function(e,n,t){t.r(n);var r=t(2791),l=t(5671),s=t(184),u=l.Z.Footer,a=function(){return(0,s.jsx)(u,{style:{textAlign:"center"},children:"Ant Design \xa92018 Created by Ant UED"})};n.default=r.memo(a)}}]);
+//# sourceMappingURL=789.44b2b9e9.chunk.js.map
