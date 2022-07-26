@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/react_DbMovie/static/css/main.0d3f762c.css",
-    "main.js": "/react_DbMovie/static/js/main.9220df4e.js",
+    "main.js": "/react_DbMovie/static/js/main.c0aa0c4c.js",
     "static/css/100.8998f69a.chunk.css": "/react_DbMovie/static/css/100.8998f69a.chunk.css",
-    "static/js/100.0b0225b3.chunk.js": "/react_DbMovie/static/js/100.0b0225b3.chunk.js",
+    "static/js/100.5c74ef7b.chunk.js": "/react_DbMovie/static/js/100.5c74ef7b.chunk.js",
     "static/js/787.051eb2ca.chunk.js": "/react_DbMovie/static/js/787.051eb2ca.chunk.js",
     "static/js/789.44b2b9e9.chunk.js": "/react_DbMovie/static/js/789.44b2b9e9.chunk.js",
     "static/js/105.86602e48.chunk.js": "/react_DbMovie/static/js/105.86602e48.chunk.js",
@@ -37,9 +37,9 @@
     "static/media/slick.woff": "/react_DbMovie/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/react_DbMovie/index.html",
     "main.0d3f762c.css.map": "/react_DbMovie/static/css/main.0d3f762c.css.map",
-    "main.9220df4e.js.map": "/react_DbMovie/static/js/main.9220df4e.js.map",
+    "main.c0aa0c4c.js.map": "/react_DbMovie/static/js/main.c0aa0c4c.js.map",
     "100.8998f69a.chunk.css.map": "/react_DbMovie/static/css/100.8998f69a.chunk.css.map",
-    "100.0b0225b3.chunk.js.map": "/react_DbMovie/static/js/100.0b0225b3.chunk.js.map",
+    "100.5c74ef7b.chunk.js.map": "/react_DbMovie/static/js/100.5c74ef7b.chunk.js.map",
     "787.051eb2ca.chunk.js.map": "/react_DbMovie/static/js/787.051eb2ca.chunk.js.map",
     "789.44b2b9e9.chunk.js.map": "/react_DbMovie/static/js/789.44b2b9e9.chunk.js.map",
     "105.86602e48.chunk.js.map": "/react_DbMovie/static/js/105.86602e48.chunk.js.map",
@@ -59,6 +59,6 @@
   },
   "entrypoints": [
     "static/css/main.0d3f762c.css",
-    "static/js/main.9220df4e.js"
+    "static/js/main.c0aa0c4c.js"
   ]
 }
