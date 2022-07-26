@@ -14,6 +14,8 @@ const LoginPage = () => {
     console.log('Failed:', errorInfo);
   };
 
+  window.alert("userName: admin && password: admin");
+
   return (
     <Row style={{marginTop: '40px'}}>
       <Col span={16} offset={2}>
