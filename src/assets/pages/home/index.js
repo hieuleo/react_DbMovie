@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from 'react';
+import useWindowDimensions from '../../features/useWindowDimensions';
 import { Row, Col, Button }  from 'antd';
 import LayoutComponent from '../../components/layout';
 import TitleComponent from '../../components/common/title';
@@ -8,12 +9,30 @@ import CommunityComponent from '../../components/common/communityPost';
 import './home.css';
 import {Api} from '../../services/api';
 const HomePage = () => {
+    const { width } = useWindowDimensions();
+    const [quantilyItem, setQuantityItem ] = useState(0);
+
+    useEffect(() => {
+        if ( width > 1300) {
+            setQuantityItem(5)  
+        }else if (width > 1158) {
+            setQuantityItem(4)
+        }else if (width > 880) {
+            setQuantityItem(3)
+        }else {
+            setQuantityItem(2)
+        }
+    },[width])
+
+
+    console.log(width)
+
     let config = {
         dots: false,
         infinite: true,
         speed: 2000,
-        slidesToShow: 5,
-        slidesToScroll: 5,
+        slidesToShow: quantilyItem,
+        slidesToScroll: quantilyItem,
         accessibility : true,
         autoplay : true,
         autoplaySpeed : 5000,

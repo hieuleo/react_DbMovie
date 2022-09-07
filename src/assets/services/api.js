@@ -58,7 +58,7 @@ async function getRecommendedSearch(pages) {
     const response = await axios.get(Url);
     const data = response.status === 200 ? response.data : {};
     return data
-}
+};
 
 // lists Search:
 async function getSearchMovie(keyword, pages) {
@@ -66,12 +66,23 @@ async function getSearchMovie(keyword, pages) {
     const response = await axios.get(Url);
     const data = response.status === 200 ? response.data : {};
     return data
+};
+
+// movie detail proposal.
+async function getProposalDetails(movie_id, page){
+    const Url = `https://api.themoviedb.org/3/movie/${movie_id}/recommendations?api_key=d4627862d17c429f5b5285fb09aeb150&language=en-US&page=${page}`;
+    const response = await axios.get(Url);
+    const data = response.status === 200 ? response.data : {};
+    return data;
 }
+
 export const Api = {
     getApiOfUpcoming,
     getMoviesDiscover,
     getMoviesNowPlaying,
-    getDetailMovie,
     getRecommendedSearch,
     getSearchMovie,
+    // detail
+    getDetailMovie,
+    getProposalDetails,
 }

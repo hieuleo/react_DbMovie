@@ -8,6 +8,8 @@ import { useAuth } from '../../hooks/useAuth';
 const HeaderComponent = () => {
     const { Header } = Layout;
     const {pathname} = useLocation();
+    let rePathname = (pathname.replace('/react_DbMovie',''));
+
     const { logout, user } = useAuth();
     //scroll:
     let className = scroll.ScrollDown();
@@ -22,7 +24,7 @@ const HeaderComponent = () => {
         ]
     }else {
         items=[
-            {key: '/', label:  <Link className='link-custom' to={"/react_DbMovie"}>Home</Link>},
+            {key: '', label:  <Link className='link-custom' to={"/react_DbMovie"}>Home</Link>},
             {key: "/Search", label: <Link className='link-custom' to={"/react_DbMovie/Search"}>Search</Link>},
             {key: '/Popular', label:  <Link className='link-custom' to={"/react_DbMovie/Popular"}>Popular</Link>},
             {key: "/Upcoming", label: <Link className='link-custom' to={"/react_DbMovie/Upcoming"}>Up coming</Link>},
@@ -45,7 +47,7 @@ const HeaderComponent = () => {
             <Menu
                 theme="dark"
                 mode="horizontal"
-                defaultSelectedKeys={[pathname]}
+                defaultSelectedKeys={[rePathname]}
                 items={items}
             />
         </Header>

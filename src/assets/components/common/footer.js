@@ -9,7 +9,7 @@ const FooterComponent = () => {
                 textAlign: 'center',
             }}
         >
-            Ant Design ©2018 Created by Ant UED
+            Nguyen Hieu ©2022 Created by Hieu Pro
         </Footer>
     )
 }
