@@ -74,6 +74,13 @@ async function getProposalDetails(movie_id, page){
     const response = await axios.get(Url);
     const data = response.status === 200 ? response.data : {};
     return data;
+};
+
+async function getCastAndCrewDetails( movie_id, language){
+    const Url = `https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=d4627862d17c429f5b5285fb09aeb150&language=${language}`;
+    const response = await axios.get(Url);
+    const data = response.status === 200 ? response.data : {};
+    return data;
 }
 
 export const Api = {
@@ -85,4 +92,5 @@ export const Api = {
     // detail
     getDetailMovie,
     getProposalDetails,
+    getCastAndCrewDetails,
 }
