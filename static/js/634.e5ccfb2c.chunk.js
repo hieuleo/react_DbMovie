@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunklearn=self.webpackChunklearn||[]).push([[634],{2634:function(n,e,a){a.r(e);var c=a(2791),r=a(6106),s=a(914),l=(a(5737),a(184)),t=function(){return(0,l.jsx)(r.Z,{className:"container_row",children:(0,l.jsx)(s.Z,{className:"container_col"})})};e.default=c.memo(t)},5737:function(){}}]);
-//# sourceMappingURL=634.e5ccfb2c.chunk.js.map

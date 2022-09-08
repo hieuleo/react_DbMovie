@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunklearn=self.webpackChunklearn||[]).push([[789],{2789:function(e,n,r){r.r(n);var t=r(2791),u=r(5671),l=r(184),a=u.Z.Footer,c=function(){return(0,l.jsx)(a,{style:{textAlign:"center"},children:"Nguyen Hieu \xa92022 Created by Hieu Pro"})};n.default=t.memo(c)}}]);
+//# sourceMappingURL=789.929e164f.chunk.js.map
