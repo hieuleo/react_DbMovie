@@ -1,17 +1,26 @@
 import React, {useState,useEffect} from 'react';
-import {Row, Col} from 'antd';
+import {Row, Col, Card} from 'antd';
+import { Link } from "react-router-dom";
+import { CircularProgressbar ,buildStyles } from 'react-circular-progressbar';
 import {Api} from '../../services/api';
 import './detail.css';
 import avatar from '../../img/nullAvatar.png';
 import avatarComment from '../../img/avatar-comment.png';
-
+import ImgError from '../../img/image-not-available.png';
 const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
+
     const [dataReview, setDataReview] = useState([]);
     const [totalPageReviews, setTotalPageReviews] = useState(1);
     const [currentPageReviews, setCurrentPageReviews] = useState(1);
     const [reviews, setReviews] = useState(0);
+    const [listProposalMuvies, setListProposalMuvies] = useState([]);
+    const [totalResultProposalMuvies, setTotalResultProposalMuvies] = useState(1)
+    const [currentPageProposalMuvies, setCurrentPageProposalMuvies] = useState(1);
+
+    const { Meta } = Card;
     let overview;
-    console.log('data', dataReview)
+    const slugify = require('slugify');
+    console.log('data', listProposalMuvies,totalResultProposalMuvies)
 
     useEffect(() => {
         const callDataReview = async () => {
@@ -27,6 +36,17 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
             }
         }
         callDataReview()
+
+        const callDataMovieProposal = async () => {
+            const data = await Api.getProposalDetails(id, 1);
+            if (data.hasOwnProperty('results')){
+                setListProposalMuvies(data.results);
+            }
+            if (data.hasOwnProperty('total_pages')){
+                setTotalResultProposalMuvies(data.total_pages);
+            }
+        }   
+        callDataMovieProposal();
     },[id, language])
     
     useEffect(() => {
@@ -123,6 +143,51 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
                                     totalPageReviews > currentPageReviews ?<div className="detail_review--button"><button onClick={() =>{clickMore()}}>MORE</button> </div> : null
                                 }
                             </div>
+                    </Col>
+                    <Col span={24} className="deteil_recommendations">
+                        <Row>
+                            {
+                                listProposalMuvies.map(item =>
+                                    <Col key={item.id} span={4} className="deteil_recommendations--item">
+                                        <Link to={`/react_DbMovie/Detail/${slugify(item.title)}~${item.id}`}>
+                                            <Card
+                                                style={{margin : '10px'}} 
+                                                hoverable
+                                                cover={<img alt="example" src={item.poster_path === null? ImgError :`https://image.tmdb.org/t/p/w300/${item.poster_path}`} />}
+                                            >
+                                                <Meta title={item.title} description={item.release_date} />
+                                                <div className={'circular-custom--list'}>
+                                                    <CircularProgressbar 
+                                                        background={true} 
+                                                        value={item.vote_average*10} 
+                                                        text={`${item.vote_average*10}%`}
+                                                        styles={buildStyles({
+                                                            // Rotation of path and trail, in number of turns (0-1)
+                                                            rotation: 0,
+                                                        
+                                                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                                                            strokeLinecap: 'butt',
+                                                        
+                                                            textSize: '26px',
+                                                        
+                                                            pathTransitionDuration: 1,
+                                                        
+                                                            // Colors
+                                                            pathColor: `${item.vote_average*10 > 70?  '#20cf79' :'#cfd230'}`,
+                                                            textColor: '#fff',
+                                                            trailColor: `${item.vote_average*10 > 70?  '#204529' :'#413c0e'}`,
+                                                            backgroundColor: '#081c22',
+                                                        })}
+                                                    />
+                                                </div>
+                                                <p className='vote-customize'>Vote: {item.vote_count}</p>
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                )
+                            }
+                            
+                        </Row>
                     </Col>
                 </Row>
             </Col>

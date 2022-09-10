@@ -83,7 +83,7 @@ const List = ({lists,loading}) => {
                                     <p className='vote-customize'>Vote: {item.vote_count}</p>
                                 </Card>
                             </Link>
-                        </Col>
+                    </Col>
                 )
             })}
         </Row>

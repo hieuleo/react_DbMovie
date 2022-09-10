@@ -10,9 +10,6 @@ const ContentComponent = loadable(() => import('../../components/detail/containe
 const DetailPage = () => {
     const [dataMovies, setDataMovies] = useState([]);
     const [dataCast, setDataCast] = useState([]);
-    const [listProposalMuvies, setListProposalMuvies] = useState([]);
-    const [totalResultProposalMuvies, setTotalResultProposalMuvies] = useState(1)
-    const [currentPageProposalMuvies, setCurrentPageProposalMuvies] = useState(1);
     const [language, setLanguage] = useState('en-US');
     const [loading, setLoading] = useState(true);
     let {id} = useParams();
@@ -27,17 +24,6 @@ const DetailPage = () => {
             setLoading(false)
         }
         callDataNew();
-
-        const callDataMovieProposal = async () => {
-            const data = await Api.getProposalDetails(id, 2);
-            if (data.hasOwnProperty('results')){
-                setListProposalMuvies(data.results);
-            }
-            if (data.hasOwnProperty('total_pages')){
-                setTotalResultProposalMuvies(data.total_pages);
-            }
-        }   
-        callDataMovieProposal();
 
         const callDataCast = async () => {
             setLanguage('en-US');
