@@ -25,12 +25,10 @@ const HomePage = () => {
     },[width])
 
 
-    console.log(width)
-
     let config = {
         dots: false,
         infinite: true,
-        speed: 2000,
+        speed: 1500,
         slidesToShow: quantilyItem,
         slidesToScroll: quantilyItem,
         accessibility : true,

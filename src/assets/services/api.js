@@ -83,6 +83,13 @@ async function getCastAndCrewDetails( movie_id, language){
     return data;
 }
 
+async function getCommentsMovies( movie_id, language, page){
+    const Url = `https://api.themoviedb.org/3/movie/${movie_id}/reviews?api_key=d4627862d17c429f5b5285fb09aeb150&language=${language}&page=${page}`;
+    const response = await axios.get(Url);
+    const data = response.status === 200 ? response.data : {};
+    return data;
+}
+
 export const Api = {
     getApiOfUpcoming,
     getMoviesDiscover,
@@ -93,4 +100,5 @@ export const Api = {
     getDetailMovie,
     getProposalDetails,
     getCastAndCrewDetails,
+    getCommentsMovies,
 }

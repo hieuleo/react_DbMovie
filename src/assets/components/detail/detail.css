@@ -53,8 +53,9 @@
 
 .header_detail-col-2{
     width: auto;
-    height: 225px;
-    top: 50%;
+    /* height: 225px; */
+    /* top: 50%; */
+    margin-top: 150px;
 }
 
 .header_detail-col-2--title{
@@ -169,6 +170,23 @@ h2{
     display: inline-block;
     margin: 0.4rem;
     min-height: 280px;
+    border: 1px solid rgba(227,227,227);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    cursor: pointer;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+
+.detail_cast--item:hover{
+    transform: translateY(-5px);
+    transition: all 0.3s ease 
+
+}
+.detail_cast--item img{
+    min-width: 137px;
+    min-height: 174px;
 }
 
 
@@ -196,4 +214,67 @@ h2{
     font-size: 14px;
     color: #000;
     margin: 0;
+}
+
+.detail_review{
+    padding: 40px 30px;
+}
+
+.detail_rewiew--header{
+    font-weight: 600;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+
+.detail_review--list{
+    margin: 40px 0 10px 20px;
+}
+.detail_review--item{
+    display: flex;
+    padding: 20px 30px 10px 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.detail_review--avatar{
+    border-radius: 50%;
+    min-width: 80px;
+    min-height: 80px;
+}
+.detail_review--name{
+    font-size: 1.4rem;
+    opacity: 0.9;
+    padding: 0 15px;
+}
+.detail_review--updated{
+    font-size: 1rem;
+    opacity: 0.9;
+    padding: 0 15px;
+}
+.detail_review--content{
+    font-size: 0.9rem;
+    opacity: 0.9;
+    padding: 10px 15px;
+    margin: 0;
+}
+
+.detail_review--button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail_review--button button{
+    background-color: #001529;
+    color: #fff;
+    font-size: 1.3rem;
+    border: none;
+    font-weight: 500;
+    padding: 5px 15px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.detail_review--button button:hover{
+    opacity: 0.9;
 }

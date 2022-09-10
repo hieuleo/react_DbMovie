@@ -12,7 +12,7 @@ const DetailPage = () => {
     const [dataCast, setDataCast] = useState([]);
     const [listProposalMuvies, setListProposalMuvies] = useState([]);
     const [totalResultProposalMuvies, setTotalResultProposalMuvies] = useState(1)
-    const [ currentPageProposalMuvies, setCurrentPageProposalMuvies] = useState(1);
+    const [currentPageProposalMuvies, setCurrentPageProposalMuvies] = useState(1);
     const [language, setLanguage] = useState('en-US');
     const [loading, setLoading] = useState(true);
     let {id} = useParams();
@@ -47,8 +47,9 @@ const DetailPage = () => {
             }
         }
         callDataCast();
-    },[id, language])
+    },[id, language]);
 
+    
     // feature:
         // trả về thông báo k có data.
         // mục cmt: https://api.themoviedb.org/3/movie/338953/reviews?api_key=d4627862d17c429f5b5285fb09aeb150&language=en-US&page=1
@@ -59,7 +60,7 @@ const DetailPage = () => {
     return(
         <LayoutComponent>
             <HeaderDetail dataMovies={dataMovies} loading={loading}/>
-            <ContentComponent dataMovies={dataMovies} dataCast={dataCast}/>
+            <ContentComponent dataMovies={dataMovies} dataCast={dataCast} id={id} language={language}/>
         </LayoutComponent>
     )
 }
