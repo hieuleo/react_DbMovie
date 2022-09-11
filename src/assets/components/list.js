@@ -59,8 +59,8 @@ const List = ({lists,loading}) => {
                                     <div className={'circular-custom--list'}>
                                         <CircularProgressbar 
                                             background={true} 
-                                            value={item.vote_average*10} 
-                                            text={`${item.vote_average*10}%`}
+                                            value={Math.floor(item.vote_average*10)} 
+                                            text={`${Math.floor(item.vote_average*10)}%`}
                                             styles={buildStyles({
                                                 // Rotation of path and trail, in number of turns (0-1)
                                                 rotation: 0,
@@ -73,9 +73,9 @@ const List = ({lists,loading}) => {
                                                 pathTransitionDuration: 1,
                                             
                                                 // Colors
-                                                pathColor: `${item.vote_average*10 > 70?  '#20cf79' :'#cfd230'}`,
+                                                pathColor: `${Math.floor(item.vote_average*10) > 70?  '#20cf79' :'#cfd230'}`,
                                                 textColor: '#fff',
-                                                trailColor: `${item.vote_average*10 > 70?  '#204529' :'#413c0e'}`,
+                                                trailColor: `${Math.floor(item.vote_average*10) > 70?  '#204529' :'#413c0e'}`,
                                                 backgroundColor: '#081c22',
                                             })}
                                         />

@@ -34,6 +34,7 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
             if (data.hasOwnProperty('total_results')){
                 setReviews(data.total_results)
             }
+            setCurrentPageReviews(1)
         }
         callDataReview()
 
@@ -45,28 +46,39 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
             if (data.hasOwnProperty('total_pages')){
                 setTotalResultProposalMuvies(data.total_pages);
             }
+            setCurrentPageProposalMuvies(1)
         }   
         callDataMovieProposal();
     },[id, language])
     
     useEffect(() => {
-        if (currentPageReviews <= totalPageReviews){
+
+    },[dataCast, dataMovies]);
+
+    const clickMore = () => {
+        if (currentPageReviews < totalPageReviews){
             const callDataReview = async () => {
-                const data = await Api.getCommentsMovies(id, language,  currentPageReviews);
+                const data = await Api.getCommentsMovies(id, language,  currentPageReviews +1);
                 if (data.hasOwnProperty('results')) {
                     setDataReview([...dataReview,...data.results])
                 }
             }
             callDataReview()
         };
-    },[currentPageReviews]);
-
-    useEffect(() => {
-
-    },[dataCast, dataMovies]);
-
-    const clickMore = () => {
         setCurrentPageReviews(currentPageReviews => currentPageReviews+1)
+    }
+
+    const clickMoreMovie = () => {
+        if (currentPageProposalMuvies < totalResultProposalMuvies){
+            const callDataMovieProposal = async () => {
+                const data = await Api.getProposalDetails(id, currentPageProposalMuvies + 1);
+                if (data.hasOwnProperty('results')){
+                    setListProposalMuvies([...listProposalMuvies.slice(0,19),...data.results]);
+                }
+            }   
+            callDataMovieProposal();
+        }
+        setCurrentPageProposalMuvies(currentPageProposalMuvies => currentPageProposalMuvies+1)
     }
 
     if (dataMovies){
@@ -159,8 +171,8 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
                                                 <div className={'circular-custom--list'}>
                                                     <CircularProgressbar 
                                                         background={true} 
-                                                        value={item.vote_average*10} 
-                                                        text={`${item.vote_average*10}%`}
+                                                        value={Math.floor(item.vote_average*10)} 
+                                                        text={`${Math.floor(item.vote_average*10)}%`}
                                                         styles={buildStyles({
                                                             // Rotation of path and trail, in number of turns (0-1)
                                                             rotation: 0,
@@ -173,9 +185,9 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
                                                             pathTransitionDuration: 1,
                                                         
                                                             // Colors
-                                                            pathColor: `${item.vote_average*10 > 70?  '#20cf79' :'#cfd230'}`,
+                                                            pathColor: `${Math.floor(item.vote_average*10) > 70?  '#20cf79' :'#cfd230'}`,
                                                             textColor: '#fff',
-                                                            trailColor: `${item.vote_average*10 > 70?  '#204529' :'#413c0e'}`,
+                                                            trailColor: `${Math.floor(item.vote_average*10) > 70?  '#204529' :'#413c0e'}`,
                                                             backgroundColor: '#081c22',
                                                         })}
                                                     />
@@ -186,7 +198,11 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
                                     </Col>
                                 )
                             }
-                            
+                            <Col span={4}>
+                                {
+                                    currentPageProposalMuvies < totalResultProposalMuvies ? <div className="detail_review--button detail_recommendations--button"><button onClick={() =>{clickMoreMovie()}}>MORE</button> </div> : null
+                                }
+                            </Col>
                         </Row>
                     </Col>
                 </Row>

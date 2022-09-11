@@ -278,3 +278,7 @@ h2{
 .detail_review--button button:hover{
     opacity: 0.9;
 }
+
+.detail_review--button.detail_recommendations--button{
+    height: 100%;
+}
