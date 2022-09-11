@@ -157,6 +157,7 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
                             </div>
                     </Col>
                     <Col span={24} className="deteil_recommendations">
+                        <h2 className="deteil_recommendations--header">Recommendations:</h2>
                         <Row>
                             {
                                 listProposalMuvies.map(item =>

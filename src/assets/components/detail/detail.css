@@ -218,6 +218,8 @@ h2{
 
 .detail_review{
     padding: 40px 30px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 30px;
 }
 
 .detail_rewiew--header{
@@ -281,4 +283,11 @@ h2{
 
 .detail_review--button.detail_recommendations--button{
     height: 100%;
+}
+
+.deteil_recommendations--header{
+    font-weight: 600;
+    font-size: 1.4em;
+    /* margin-bottom: 20px; */
+    padding-bottom: 20px;
 }
