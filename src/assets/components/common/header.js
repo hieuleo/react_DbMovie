@@ -26,7 +26,7 @@ const HeaderComponent = () => {
         items=[
             {key: '', label:  <Link className='link-custom' to={"/react_DbMovie"}>Home</Link>},
             {key: "/Search", label: <Link className='link-custom' to={"/react_DbMovie/Search"}>Search</Link>},
-            {key: '/Popular', label:  <Link className='link-custom' to={"/react_DbMovie/Popular"}>Popular</Link>},
+            // {key: '/Popular', label:  <Link className='link-custom' to={"/react_DbMovie/Popular"}>Popular</Link>},
             {key: "/Upcoming", label: <Link className='link-custom' to={"/react_DbMovie/Upcoming"}>Up coming</Link>},
             {key: "/logout", label: <Button onClick={() => logout()}>Logout</Button>},
         ]

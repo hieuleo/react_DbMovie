@@ -291,3 +291,7 @@ h2{
     /* margin-bottom: 20px; */
     padding-bottom: 20px;
 }
+
+.deteil_recommendations--err {
+    padding-left: 50px;
+}

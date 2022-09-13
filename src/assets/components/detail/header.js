@@ -38,7 +38,7 @@ const HeaderDetail = ({dataMovies, loading}) => {
     if (loading) {
         return(
 
-            <Row style={{backgroundImage : `linear-gradient(to right, rgba(10.5, 31.5, 31.5, 1) 0%, rgba(10.5, 31.5, 31.5, 0.84) 5%), url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${dataMovies.backdrop_path})`}} className={'header_detail-row'}>
+            <Row className={'header_detail-row'}>
                 <Col span={6} className={'header_detail-col-1'} >
                     <Skeleton active/>
                 </Col>
@@ -50,7 +50,7 @@ const HeaderDetail = ({dataMovies, loading}) => {
     }
 
     return (
-        <Row style={{backgroundImage : `linear-gradient(to right, rgba(10.5, 31.5, 31.5, 1) 0%, rgba(10.5, 31.5, 31.5, 0.84) 5%), url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${dataMovies.backdrop_path})`}} className={'header_detail-row'}>
+        <Row style={{backgroundImage : `linear-gradient(to right, rgba(10.5, 31.5, 31.5, 1) 0%, rgba(10.5, 31.5, 31.5, 0.65) 5%), url(https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${dataMovies.backdrop_path})`}} className={'header_detail-row'}>
             <Col span={6} className={'header_detail-col-1'} >
                 <Image
                     src={dataMovies.poster_path? `https://image.tmdb.org/t/p/w300_and_h450_bestv2/${dataMovies.poster_path}` : Logo}

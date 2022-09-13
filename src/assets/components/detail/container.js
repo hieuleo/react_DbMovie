@@ -20,7 +20,7 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
     const { Meta } = Card;
     let overview;
     const slugify = require('slugify');
-    console.log('data', listProposalMuvies,totalResultProposalMuvies)
+    // console.log('data', listProposalMuvies,totalResultProposalMuvies)
 
     useEffect(() => {
         const callDataReview = async () => {
@@ -160,7 +160,7 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
                         <h2 className="deteil_recommendations--header">Recommendations:</h2>
                         <Row>
                             {
-                                listProposalMuvies.map(item =>
+                                listProposalMuvies.length > 0 ?listProposalMuvies.map(item =>
                                     <Col key={item.id} span={4} className="deteil_recommendations--item">
                                         <Link to={`/react_DbMovie/Detail/${slugify(item.title)}~${item.id}`}>
                                             <Card
@@ -197,7 +197,7 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
                                             </Card>
                                         </Link>
                                     </Col>
-                                )
+                                ) : <p className='deteil_recommendations--err'>We don't have any recommendations for {dataMovies.title} </p>
                             }
                             <Col span={4}>
                                 {
