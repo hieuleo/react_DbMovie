@@ -14,8 +14,6 @@ const LoginPage = () => {
     console.log('Failed:', errorInfo);
   };
 
-  window.alert("userName: admin && password: admin");
-
   return (
     <Row style={{marginTop: '40px'}}>
       <Col span={16} offset={2}>
@@ -37,7 +35,6 @@ const LoginPage = () => {
           <Form.Item
             label="Username"
             name="username"
-            initialValues="admin"
             rules={[
               {
                 required: true,
@@ -51,7 +48,6 @@ const LoginPage = () => {
           <Form.Item
             label="Password"
             name="password"
-            initialValues="admin"
             rules={[
               {
                 required: true,

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useMemo } from 'react';
+import React, { createContext, useCallback, useContext, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import getToken from '../services/loginApi';
 import { useLocation } from '../hooks/useLocation';
@@ -12,27 +12,28 @@ export const AuthProvider = ({children}) => {
     const navigate = useNavigate();
     
     // handle login request
-    const login = async (infoUser) => {
-        let token = getToken(infoUser);
-        if (token) {
-            setUser(token);
+    const login = useCallback(async (infoUser) => {
+        try {
+            const authData = await getToken(infoUser);
+            setUser(authData);
             navigate("/react_DbMovie/Upcoming", { replace : true }); // dieu huong login
-        }else{
-            alert(" Incorrect useName or passWord !!!")
+        } catch (error) {
+            const message = error.response?.data?.message || 'Incorrect username or password.';
+            alert(message);
         }
-    }
+    }, [navigate, setUser]);
 
     // handle logout request
-    const logout = () => {
+    const logout = useCallback(() => {
         setUser(null);
         navigate("/react_DbMovie/login", { replace : true }); // dieu huong login
-    }
+    }, [navigate, setUser]);
 
     const value = useMemo(() => ({
         user,
         login,
         logout
-    }),[user]);
+    }),[user, login, logout]);
 
     return <AuthContext.Provider value={value} >{children}</AuthContext.Provider>
 }
