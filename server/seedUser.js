@@ -8,7 +8,7 @@ const { getDb } = require('./db');
 async function seedUser() {
   fs.mkdirSync(path.join(__dirname, 'data'), { recursive: true });
 
-  const username = process.env.SEED_USERNAME || 'admin';
+  const username = (process.env.SEED_USERNAME || 'admin').trim().toLowerCase();
   const password = process.env.SEED_PASSWORD || 'admin123';
   const db = await getDb();
   const existingUser = await db.get('SELECT id FROM users WHERE username = ?', username);

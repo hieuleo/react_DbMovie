@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export const useLocation = (keyWords, defaultValue) => {
     const [valueLocalStorage, setValueLocalStorage] = useState(() =>{
@@ -15,14 +15,14 @@ export const useLocation = (keyWords, defaultValue) => {
         }
     })
 
-    const setValue = (newValue) => {
+    const setValue = useCallback((newValue) => {
         try{
             window.localStorage.setItem(keyWords, JSON.stringify(newValue));
         }catch(e){
             console.error(e);
         }
         setValueLocalStorage(newValue);
-    }
+    }, [keyWords])
 
     return [valueLocalStorage, setValue];
 }

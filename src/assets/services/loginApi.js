@@ -5,18 +5,28 @@ const getApiBaseUrl = () => {
         return process.env.REACT_APP_API_URL;
     }
 
-    if (typeof window !== 'undefined') {
-        return `${window.location.protocol}//${window.location.hostname}:5000`;
-    }
-
-    return 'http://localhost:5000';
+    return '';
 };
 
+const authClient = axios.create({
+    baseURL: getApiBaseUrl(),
+});
+
 export default async function getToken({ username, password }) {
-    const response = await axios.post(`${getApiBaseUrl()}/api/auth/login`, {
+    const response = await authClient.post('/api/auth/login', {
         username,
         password,
     });
 
     return response.data;
+}
+
+export async function getCurrentUser(token) {
+    const response = await authClient.get('/api/auth/me', {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    return response.data.user;
 }

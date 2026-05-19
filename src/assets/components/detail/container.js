@@ -20,11 +20,10 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
     const { Meta } = Card;
     let overview;
     const slugify = require('slugify');
-    // console.log('data', listProposalMuvies,totalResultProposalMuvies)
 
     useEffect(() => {
         const callDataReview = async () => {
-            const data = await Api.getCommentsMovies(id, language,  currentPageReviews);
+            const data = await Api.getCommentsMovies(id, language,  1);
             if (data.hasOwnProperty('results')) {
                 setDataReview(data.results)
             }
@@ -50,22 +49,18 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
         }   
         callDataMovieProposal();
     },[id, language])
-    
-    useEffect(() => {
-
-    },[dataCast, dataMovies]);
 
     const clickMore = () => {
         if (currentPageReviews < totalPageReviews){
             const callDataReview = async () => {
                 const data = await Api.getCommentsMovies(id, language,  currentPageReviews +1);
                 if (data.hasOwnProperty('results')) {
-                    setDataReview([...dataReview,...data.results])
+                    setDataReview((currentReviews) => [...currentReviews,...data.results])
                 }
             }
             callDataReview()
+            setCurrentPageReviews(currentPageReviews => currentPageReviews+1)
         };
-        setCurrentPageReviews(currentPageReviews => currentPageReviews+1)
     }
 
     const clickMoreMovie = () => {
@@ -73,12 +68,12 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
             const callDataMovieProposal = async () => {
                 const data = await Api.getProposalDetails(id, currentPageProposalMuvies + 1);
                 if (data.hasOwnProperty('results')){
-                    setListProposalMuvies([...listProposalMuvies.slice(0,19),...data.results]);
+                    setListProposalMuvies((currentMovies) => [...currentMovies.slice(0,19),...data.results]);
                 }
             }   
             callDataMovieProposal();
+            setCurrentPageProposalMuvies(currentPageProposalMuvies => currentPageProposalMuvies+1)
         }
-        setCurrentPageProposalMuvies(currentPageProposalMuvies => currentPageProposalMuvies+1)
     }
 
     if (dataMovies){
@@ -111,18 +106,22 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
                             {
                                 dataCast ? dataCast.map(item => ( 
                                     item.character ?
-                                    <div key={item.name} className="detail_cast--item">
-                                        { item.profile_path?
-                                            <img alt={item.name} src={`https://www.themoviedb.org/t/p/w138_and_h175_face${item.profile_path}`}></img>
-                                            : <img src={`${avatar}`}></img>
-                                        }
-                                        <h2>{item.name}</h2>
-                                        <p>{item.character}</p>
-                                        <p className="detail_cast--item-job"> {item.known_for_department} </p>
-                                    </div> : null
+                                    <Link
+                                        key={item.id}
+                                        className="detail_cast--item detail_cast--link"
+                                        to={`/react_DbMovie/Person/${slugify(item.name)}~${item.id}`}
+                                    >
+                                            { item.profile_path?
+                                                <img alt={item.name} src={`https://www.themoviedb.org/t/p/w138_and_h175_face${item.profile_path}`}></img>
+                                                : <img alt={item.name} src={`${avatar}`}></img>
+                                            }
+                                            <h2>{item.name}</h2>
+                                            <p>{item.character}</p>
+                                            <p className="detail_cast--item-job"> {item.known_for_department} </p>
+                                    </Link> : null
                                 )): 
                                     <div  className="detail_cast--item">
-                                        <img src={`${avatar}`}></img>
+                                        <img alt="unknown cast member" src={`${avatar}`}></img>
                                         <h2>unknown</h2>
                                         <p>unknown</p>
                                         <p className="detail_cast--item-job"> unknown</p>
@@ -135,7 +134,7 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
                             <div className="detail_review--list">
                                 {
                                     dataReview.length > 0? dataReview.map(item => (
-                                        <div key={item.id} className="detail_review--item">
+                                        <Link key={item.id} className="detail_review--item detail_review--link" to={`/react_DbMovie/Review/${item.id}`}>
                                             <div>
                                                 {
                                                     item.author_details.avatar_path ? 
@@ -148,7 +147,7 @@ const ContainerComponent = ({id,language,dataCast, dataMovies}) => {
                                                 <span className="detail_review--updated">{item.created_at}</span>
                                                 <p className="detail_review--content">{item.content}</p>
                                             </div>
-                                        </div>
+                                        </Link>
                                     )): <p>We don't have any reviews for {dataMovies.title} </p>
                                 }
                                 {

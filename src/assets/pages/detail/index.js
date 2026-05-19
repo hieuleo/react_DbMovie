@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import {Api} from '../../services/api';
 import loadable from '@loadable/component';
 import 'react-modal-video/css/modal-video.min.css';
+import ErrorPage from '../error/index';
 const LayoutComponent = loadable(() => import('../../components/layout'));
 const HeaderDetail = loadable(() => import('../../components/detail/header'));
 const ContentComponent = loadable(() => import('../../components/detail/container'));
@@ -12,9 +13,16 @@ const DetailPage = () => {
     const [dataCast, setDataCast] = useState([]);
     const [language, setLanguage] = useState('en-US');
     const [loading, setLoading] = useState(true);
-    let {id} = useParams();
+    const {movieSlug} = useParams();
+    const id = movieSlug?.split('~').pop();
+    const hasValidId = Boolean(id && /^\d+$/.test(id));
 
     useEffect(() => {
+        if (!hasValidId) {
+            setLoading(false);
+            return;
+        }
+
         const callDataNew = async () => {
             setLanguage('en-US');
             const data = await Api.getDetailMovie(id, language);
@@ -39,21 +47,14 @@ const DetailPage = () => {
             left: 0, 
             behavior: 'smooth' 
         });  
-    },[id, language]);
-
-    
-    // feature:
-        // trả về thông báo k có data.
-        // mục cmt: https://api.themoviedb.org/3/movie/338953/reviews?api_key=d4627862d17c429f5b5285fb09aeb150&language=en-US&page=1
-        // Nhận danh sách các bộ phim được đề xuất cho một bộ phim:
-            // https://api.themoviedb.org/3/movie/{movie_id}/recommendations?api_key=d4627862d17c429f5b5285fb09aeb150&language=en-US&page=1
-        // Nhận danh sách các bộ phim tương tự:
-            // https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=d4627862d17c429f5b5285fb09aeb150&language=en-US&page=1
+    },[id, language, hasValidId]);
     return(
+        hasValidId ?
         <LayoutComponent>
             <HeaderDetail dataMovies={dataMovies} loading={loading}/>
             <ContentComponent dataMovies={dataMovies} dataCast={dataCast} id={id} language={language}/>
         </LayoutComponent>
+        : <ErrorPage />
     )
 }
 

@@ -1,6 +1,6 @@
-import React, { createContext, useCallback, useContext, useMemo } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import getToken from '../services/loginApi';
+import getToken, { getCurrentUser } from '../services/loginApi';
 import { useLocation } from '../hooks/useLocation';
 
 const AuthContext = createContext();
@@ -9,7 +9,44 @@ const AuthContext = createContext();
 export const AuthProvider = ({children}) => { 
     // khoi tao 1 storage
     const [user, setUser] = useLocation('user_Login', null);
+    const [checkingAuth, setCheckingAuth] = useState(Boolean(user?.token));
     const navigate = useNavigate();
+
+    useEffect(() => {
+        let isMounted = true;
+
+        const verifyStoredToken = async () => {
+            if (!user?.token) {
+                setCheckingAuth(false);
+                return;
+            }
+
+            try {
+                const currentUser = await getCurrentUser(user.token);
+
+                if (isMounted) {
+                    setUser({
+                        token: user.token,
+                        user: currentUser,
+                    });
+                }
+            } catch (error) {
+                if (isMounted) {
+                    setUser(null);
+                }
+            } finally {
+                if (isMounted) {
+                    setCheckingAuth(false);
+                }
+            }
+        };
+
+        verifyStoredToken();
+
+        return () => {
+            isMounted = false;
+        };
+    }, [setUser, user?.token]);
     
     // handle login request
     const login = useCallback(async (infoUser) => {
@@ -18,7 +55,7 @@ export const AuthProvider = ({children}) => {
             setUser(authData);
             navigate("/react_DbMovie/Upcoming", { replace : true }); // dieu huong login
         } catch (error) {
-            const message = error.response?.data?.message || 'Incorrect username or password.';
+            const message = error.response?.data?.message || 'Cannot connect to the authentication server.';
             alert(message);
         }
     }, [navigate, setUser]);
@@ -31,9 +68,10 @@ export const AuthProvider = ({children}) => {
 
     const value = useMemo(() => ({
         user,
+        checkingAuth,
         login,
         logout
-    }),[user, login, logout]);
+    }),[user, checkingAuth, login, logout]);
 
     return <AuthContext.Provider value={value} >{children}</AuthContext.Provider>
 }

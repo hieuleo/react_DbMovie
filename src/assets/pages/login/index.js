@@ -10,9 +10,7 @@ const LoginPage = () => {
     login(values);
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
+  const onFinishFailed = () => {};
 
   return (
     <Row style={{marginTop: '40px'}}>
